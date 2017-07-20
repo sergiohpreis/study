@@ -7,27 +7,36 @@ class NegociacaoController {
         this.inputData = $('#data');
         this.inputQuantidade = $('#quantidade');
         this.inputValor = $('#valor');
+
+        // Cria uma nova lista de negociações
+        this._listaNegociacoes = new ListaNegociacoes();
     };
 
     // Método que adiciona a negociação (é utilizado no onsubmit do form)
     adiciona(event){
         event.preventDefault();
+        
+        this._listaNegociacoes.adiciona(this._criaNegociacao());
+        this._limpaFormulario();
 
-        var data = this.inputData.value.replace('-','/');
-        var quantidade = this.inputQuantidade.value;
-        var valor = this.inputValor.value;
+        console.log(this._listaNegociacoes._negociacoes);
+    };
 
-        var negociacao = new Negociacao(new Date(data), quantidade, valor);
-
-        console.log(negociacao);
-        this.limpa();
+    // Método responsável por criar uma negociação
+    _criaNegociacao(){
+        return new Negociacao(
+            DateHelper.textoParaData(this.inputData.value), 
+            this.inputQuantidade.value, 
+            this.inputValor.value
+        );
     };
 
     // Método que limpa os campos e coloca o foco no input de data
-    limpa() {
+    _limpaFormulario() {
         this.inputData.value = '';
         this.inputQuantidade.value = '1';
         this.inputValor.value = '0.0';
+
         this.inputData.focus();
     };
 };
