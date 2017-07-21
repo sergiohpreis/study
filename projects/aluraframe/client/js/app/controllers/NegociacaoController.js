@@ -10,6 +10,12 @@ class NegociacaoController {
 
         // Cria uma nova lista de negociações
         this._listaNegociacoes = new ListaNegociacoes();
+
+        // Cria uma instancia da view
+        this._negociacoesView = new NegociacoesView($('#negociacoesView'));
+
+        // Atualiza a view com o modelo (que é a lista de negociações)
+        this._negociacoesView.update(this._listaNegociacoes);
     };
 
     // Método que adiciona a negociação (é utilizado no onsubmit do form)
@@ -19,7 +25,8 @@ class NegociacaoController {
         this._listaNegociacoes.adiciona(this._criaNegociacao());
         this._limpaFormulario();
 
-        console.log(this._listaNegociacoes._negociacoes);
+        // Atualiza a view com o modelo (que é a lista de negociações)
+        this._negociacoesView.update(this._listaNegociacoes);
     };
 
     // Método responsável por criar uma negociação
