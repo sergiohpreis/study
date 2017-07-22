@@ -13,6 +13,12 @@ class Negociacao {
         Object.freeze(this);
     };
 
+    /*
+    Métodos getters (get) servem para obter valores de propiedades.
+    São chamados da seguinte forma:
+    Negociacao.volume
+    */
+
     get volume() {
         return this._quantidade * this._valor;
     };
