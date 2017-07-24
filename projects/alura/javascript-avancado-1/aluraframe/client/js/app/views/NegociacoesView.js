@@ -1,10 +1,11 @@
-class NegociacoesView {
-    constructor(elemento){
-        this._elemento = elemento
+class NegociacoesView extends View {
+    constructor(elemento) {
+        // O metodo super() serve para passar o parametro para a classe pai
+        super(elemento);
     };
-
+    
     // Método responsável por retornar o template atualizado com o modelo
-    _template(model) {
+    template(model) {
         return `
         <table class="table table-hover table-bordered">
             <thead>
@@ -34,9 +35,4 @@ class NegociacoesView {
         </table>
         `;
     };
-
-    // Método responsável por atualizar o HTML com o template
-    update(model) {
-        this._elemento.innerHTML = this._template(model);
-    };
-};
+}
