@@ -20,5 +20,23 @@ module.exports = {
         port: 8080,
         // Pasta Base onde estarão os arquivos que deverão ser carregados
         contentBase: './public'
+    },
+    module: {
+        // Carrega os arquivos
+        loaders: [{
+            /*
+            Tipo do arquivo que deve ser carregado, nesse caso
+            todos os arquivos que terminem com .js
+            */ 
+            test: /.js?$/,
+            // Loader que deve ser usado
+            loader: 'babel-loader',
+            // Exclui arquivos ou pastas que não devem ser lidos
+            exclude: /node_modules/,
+            // O que eu quero que o loader interprete
+            query: {
+                presets: ['es2015']
+            }
+        }]
     }
 };
