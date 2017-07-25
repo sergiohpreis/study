@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 
+// Exporta um modulo
 module.exports = {
     // A partir desse arquivo a aplicação será carregada
     entry: './ex/index.js',
