@@ -1,3 +1,8 @@
-const logger = require('./logger');
-// A função info vira um método de logger
-logger.info('Usando o padrão CommonJS!');
+/*
+Importa a classe Pessoa do arquivo
+pessoa.js (usando o caminho relativo ./)
+*/ 
+import Pessoa from './pessoa';
+
+const pessoa = new Pessoa('Guilherme');
+console.log(pessoa.toString());
