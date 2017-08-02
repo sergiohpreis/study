@@ -1,5 +1,9 @@
 import React from 'react';
 
-export default () => (
-    <h1>Primeiro Componente!</h1>
+/*
+O paramêtro 'props' recebe as propiedades passadas
+no componente quando instanciado
+*/
+export default props => (
+    <h1>{props.value}</h1>
 );
