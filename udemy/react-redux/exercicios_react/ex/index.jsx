@@ -1,9 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Component from './component';
+import Primeiro, {Segundo} from './component';
 
-/*
-Ao instanciar o component, podemos setar as propiedades.
-Estas são acessadas através do parametro props no componente
-*/
-ReactDOM.render(<Component value="Show!" />, document.getElementById('app'));
+ReactDOM.render(
+    /*
+    Só podemos retornar um componente no React,
+    Se quisermos retornar 2 components, como no exemplo abaixo,
+    precisamos retornar ele dentro de uma tag, ou seja
+    um único component.
+    */
+    <div>
+        <Primeiro />
+        <Segundo />
+    </div>
+, document.getElementById('app'));
