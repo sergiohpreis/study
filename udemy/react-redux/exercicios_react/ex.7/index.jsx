@@ -4,7 +4,8 @@ import Family from './family'
 import Member from './member'
 
 ReactDOM.render(
-    <Family lastName="Silva">
-        <Member name="Guilherme" />
+    <Family>
+        {/* Será recebido dentro de {props.children} */}
+        <Member name="Guilherme" lastName="Silva" />
     </Family>
 , document.getElementById('app'));

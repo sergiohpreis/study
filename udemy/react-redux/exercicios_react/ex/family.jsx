@@ -3,7 +3,7 @@ import React from 'react';
 export default props => (
     <div>
         <h1>Familia</h1>
-        {/* Tudo que é passado dentro do componente  */}
-        {props.children}
+        {/* Funciona somente para um elemento */}
+        {React.cloneElement(props.children, {...props})}
     </div>
 );
