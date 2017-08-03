@@ -1,15 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import SilvaFamily from './silvaFamily'
+import Family from './family'
+import Member from './member'
 
 ReactDOM.render(
-    /*
-    Só podemos retornar um componente no React,
-    Se quisermos retornar 2 components, como no exemplo abaixo,
-    precisamos retornar ele dentro de uma tag, ou seja
-    um único component.
-    */
-    <div>
-        <SilvaFamily />
-    </div>
+    <Family>
+        {/* Será recebido dentro de {props.children} */}
+        <Member name="Guilherme" lastName="Silva" />
+    </Family>
 , document.getElementById('app'));
