@@ -1,7 +1,20 @@
-# Cursos
+# Study
+This repo contains all my studies from courses, books and etc.
 
-Abaixo os cursos que fazem parte desse repositório e os seus respectivos projetos (pastas):
 
+## Courses
+Below the courses that are part of this repo and their respective projects (folders):
 
 - **JavaScript avançado I: ES6, orientação a objetos e padrões de projetos**
-    - aluraframe
+    - From: Alura
+    - Folders:
+        - aluraframe
+
+- **React + Redux: Fundamentos e Duas Apps do ABSOLUTO ZERO!**
+    - From: Udemy
+    - Folders:
+        - exercises_webpack
+        - exercises_react
+
+
+_All the codes in this repository come from their origins (courses, books and etc)._
