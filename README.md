@@ -8,13 +8,13 @@ Below the courses that are part of this repo and their respective projects (fold
 - **JavaScript avançado I: ES6, orientação a objetos e padrões de projetos**
     - From: Alura
     - Folders:
-        - aluraframe
+        - `alura/javascript-avancado-1/aluraframe`
 
 - **React + Redux: Fundamentos e Duas Apps do ABSOLUTO ZERO!**
     - From: Udemy
     - Folders:
-        - exercises_webpack
-        - exercises_react
+        - `udemy/react-redux/exercises_webpack`
+        - `udemy/react-redux/exercises_react`
 
 
 _All the codes in this repository come from their origins (courses, books and etc)._
