@@ -2,3 +2,4 @@
 de configuração */
 
 require('./config/server');
+require('./config/database');
