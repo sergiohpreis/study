@@ -23,19 +23,27 @@ export default class Todo extends Component {
         this.handleRemove = this.handleRemove.bind(this);
         this.handleMarkAsDone = this.handleMarkAsDone.bind(this);
         this.handleMarkAsPending = this.handleMarkAsPending.bind(this);
+        this.handleSearch = this.handleSearch.bind(this);
     
         this.refresh();
     };
 
     // Método responsável por trazer a lista atualizada
-    refresh() {
+    refresh(description = '') {
+        /*
+        Se a descrição for valida adiciona o parametro na URL do GET
+        caso contrário, deixa vazio
+        */
+        const search = description ? `&description__regex=/${description}/` : '';
+        
         /*
         1 - Faz um GET organizando por data de criação
-        2 - Seta a descrição para ''
+        2 - Utiliza a descrição informada (para manter a descrição no input
+        devemos passar o estado)
         3 - Preenche a lista com todas as tarefas criadas no Banco
         */
-        axios.get(`${URL}?sort=-createdAt`)
-            .then(resp => this.setState({...this.state, description: '', list: resp.data}))
+        axios.get(`${URL}?sort=-createdAt${search}`)
+            .then(resp => this.setState({...this.state, description, list: resp.data}))
     };
 
     // Método responsável por adicionar uma nova todo
@@ -63,7 +71,7 @@ export default class Todo extends Component {
         2 - Faz um refresh usando o método refresh
         */
         axios.delete(`${URL}/${todo._id}`)
-            .then(result => this.refresh())
+            .then(result => this.refresh(this.state.description))
     };
 
     // Método responsável por marcar um todo como feito
@@ -73,7 +81,7 @@ export default class Todo extends Component {
         2 - Faz um refresh utilizando o método refresh
         */
         axios.put(`${URL}/${todo._id}`, {...todo, done: true})
-            .then(result => this.refresh())
+            .then(result => this.refresh(this.state.description))
     };
 
     // Método responsável por marcar um todo como não feito
@@ -83,7 +91,12 @@ export default class Todo extends Component {
         2 - Faz um refresh utilizando o método refresh
         */
         axios.put(`${URL}/${todo._id}`, {...todo, done: false})
-            .then(result => this.refresh())
+            .then(result => this.refresh(this.state.description))
+    };
+
+    // Método responsável pela busca de todos especificas
+    handleSearch() {
+        this.refresh(this.state.description);
     };
 
     render() {
@@ -91,8 +104,10 @@ export default class Todo extends Component {
             <div>
                 <PageHeader name="Tarefas" small="Cadastro"></PageHeader>
                 <TodoForm 
+                description={this.state.description}
                 handleAdd={this.handleAdd}
-                handleChange={this.handleChange}/>
+                handleChange={this.handleChange}
+                handleSearch={this.handleSearch}/>
                 <TodoList 
                 list={this.state.list}
                 handleRemove={this.handleRemove}
