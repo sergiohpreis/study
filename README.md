@@ -15,6 +15,7 @@ Below the courses that are part of this repo and their respective projects (fold
     - Folders:
         - `udemy/react-redux/exercises_webpack`
         - `udemy/react-redux/exercises_react`
+        - `udemy/react-redux/todo-app`
 
 
 _All the codes in this repository come from their origins (courses, books and etc)._
