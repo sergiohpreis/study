@@ -1,32 +1,29 @@
 import React, {Component} from 'react';
+// Conectar React e Redux
+import {connect} from 'react-redux';
 
 class Field extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {value: props.initialValue};
-        /*
-        Configuramos o bind pois no contexto do onChange,
-        o this é atribuito a ele, e não a classe Field
-        */
-        this.handleChange = this.handleChange.bind(this);
-    };
-
-    handleChange(event) {
-        this.setState({value: event.target.value});
-    };
-
     render() {
         return (
             <div>
-                <label>{this.state.value}</label>
-                {/*
-                Não precisamos retornar uma Arrow Function pois no caso do onChange, 
-                ele já espera uma função como parametro.
-                */}
-                <input onChange={this.handleChange} value={this.state.value} />
+                <label>{this.props.value}</label><br/>
+                <input onChange={this.handleChange} value={this.props.value} />
             </div>
         );
     };
 };
 
-export default Field;
+/*
+Mapear os atributos do estado (store) da aplicação para as
+propriedades dos componentes.
+Uma vez que o estado da aplicação é global (store), somente
+iremos trabalhar com as propiedades dos componentes, por isso
+faremos o uso desse método
+*/
+function mapStateToProps(state) {
+    return {
+        value: state.field.value
+    };
+};
+
+export default connect(mapStateToProps)(Field);
