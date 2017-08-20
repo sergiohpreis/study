@@ -1,5 +1,4 @@
 export function changeValue(e) {
-    console.log('changeValue');
     return {
         // Tipo do Objeto (É obrigatório e deve ter o nome de type)
         type: 'VALUE_CHANGED',
