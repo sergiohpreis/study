@@ -9,6 +9,7 @@ import {combineReducers} from 'redux';
 // Reducer que combina todos os outros reducers
 const rootReducer = combineReducers({
     todo: () => ({
+        description: 'Ler Livro',
         list: [{
             _id: 1,
             description: 'Pagar fatura do cartão',
