@@ -16,6 +16,8 @@ Below the courses that are part of this repo and their respective projects (fold
         - `udemy/react-redux/exercises_webpack`
         - `udemy/react-redux/exercises_react`
         - `udemy/react-redux/todo-app`
+        - `udemy/react-redux/todo-app-redux`
+        - `udemy/react-redux/my-money-app`
 
 
 _All the codes in this repository come from their origins (courses, books and etc)._
