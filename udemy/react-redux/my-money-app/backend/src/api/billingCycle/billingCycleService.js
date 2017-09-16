@@ -7,3 +7,5 @@ BillingCycle.methods(['get', 'post', 'put', 'delete']);
  * runValidators - Executará as validações no update
  */
 BillingCycle.updateOptions({new: true, runValidators: true});
+
+module.exports = BillingCycle;
