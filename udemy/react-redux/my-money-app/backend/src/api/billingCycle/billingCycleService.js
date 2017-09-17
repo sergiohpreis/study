@@ -1,4 +1,5 @@
 const BillingCycle = require('./billingCycle');
+const errorHandler = require('../common/errorHandler');
 
 // Métodos que serão atendidos pela aplicação
 BillingCycle.methods(['get', 'post', 'put', 'delete']);
@@ -7,6 +8,8 @@ BillingCycle.methods(['get', 'post', 'put', 'delete']);
  * runValidators - Executará as validações no update
  */
 BillingCycle.updateOptions({new: true, runValidators: true});
+// Responsável por aplicar o middleware após o método HTTP
+BillingCycle.after('post', errorHandler).after('put', errorHandler);
 
 BillingCycle.route('count', (req, res, next) => {
     BillingCycle.count((error, value) => {
