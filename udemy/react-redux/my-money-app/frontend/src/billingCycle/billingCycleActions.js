@@ -5,6 +5,7 @@ import {reset as resetForm, initialize} from 'redux-form';
 import {showTabs, selectTab} from '../common/tab/tabActions';
 
 const BASE_URL = 'http://localhost:3003/api';
+const INITIAL_VALUES = {};
 
 export const getList = () => {
     const request = axios.get(`${BASE_URL}/billingCycles`);
@@ -19,12 +20,7 @@ export const create = values => {
         axios.post(`${BASE_URL}/billingCycles`, values)
             .then(resp => {
                 toastr.success('Sucesso', 'Operação realizada com sucesso.');
-                dispatch([
-                    resetForm('billingCycleForm'),
-                    getList(),
-                    selectTab('tabList'),
-                    showTabs('tabList', 'tabCreate')
-                ]);
+                dispatch(init());
             })
             .catch(e => {
                 e.response.data.errors.forEach(error => toastr.error('Erro', error));
@@ -37,3 +33,12 @@ export const showUpdate = billingCycle => [
     selectTab('tabUpdate'),
     initialize('billingCycleForm', billingCycle)
 ];
+
+export const init = () => {
+    return [
+        showTabs('tabList', 'tabCreate'),
+        selectTab('tabList'),
+        getList(),
+        initialize('billingCycleForm', INITIAL_VALUES)
+    ];
+};
