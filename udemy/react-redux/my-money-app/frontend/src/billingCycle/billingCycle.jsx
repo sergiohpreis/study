@@ -13,7 +13,7 @@ import List from './billingCycleList';
 import Form from './billingCycleForm';
 
 import {selectTab, showTabs} from '../common/tab/tabActions';
-import {create, update} from './billingCycleActions';
+import {create, update, remove} from './billingCycleActions';
 
 class BillingCycle extends Component {
     componentWillMount() {
@@ -34,16 +34,18 @@ class BillingCycle extends Component {
                             <TabHeader label="Excluir" icon="trash-o" target="tabDelete"/>
                         </TabsHeader>
                         <TabsContent>
-                           <TabContent id="tabList">
-                               <List/>
-                           </TabContent>
-                           <TabContent id="tabCreate">
-                               <Form onSubmit={this.props.create}/>
-                           </TabContent>
-                           <TabContent id="tabUpdate">
-                               <Form onSubmit={this.props.update}/>
-                           </TabContent>
-                           <TabContent id="tabDelete"><h1>Excluir</h1></TabContent>
+                            <TabContent id="tabList">
+                                <List/>
+                            </TabContent>
+                            <TabContent id="tabCreate">
+                                <Form onSubmit={this.props.create}/>
+                            </TabContent>
+                            <TabContent id="tabUpdate">
+                                <Form onSubmit={this.props.update}/>
+                            </TabContent>
+                            <TabContent id="tabDelete">
+                                <Form onSubmit={this.props.remove} readOnly={true}/>
+                            </TabContent>
                         </TabsContent>
                     </Tabs>
                 </Content>
@@ -53,6 +55,6 @@ class BillingCycle extends Component {
 };
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-    selectTab, showTabs, create, update
+    selectTab, showTabs, create, update, remove
 }, dispatch);
 export default connect(null, mapDispatchToProps)(BillingCycle);

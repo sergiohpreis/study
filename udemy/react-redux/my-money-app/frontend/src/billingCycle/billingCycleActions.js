@@ -29,10 +29,17 @@ const submit = (values, method) => dispatch => {
 
 export const create = values => submit(values, 'post');
 export const update = values => submit(values, 'put');
+export const remove = values => submit(values, 'delete');
 
 export const showUpdate = billingCycle => [
     showTabs('tabUpdate'),
     selectTab('tabUpdate'),
+    initialize('billingCycleForm', billingCycle)
+];
+
+export const showDelete = billingCycle => [
+    showTabs('tabDelete'),
+    selectTab('tabDelete'),
     initialize('billingCycleForm', billingCycle)
 ];
 
