@@ -15,18 +15,20 @@ export const getList = () => {
     };
 };
 
-export const create = values => {
-    return dispatch => {
-        axios.post(`${BASE_URL}/billingCycles`, values)
-            .then(resp => {
-                toastr.success('Sucesso', 'Operação realizada com sucesso.');
-                dispatch(init());
-            })
-            .catch(e => {
-                e.response.data.errors.forEach(error => toastr.error('Erro', error));
-            });
-    };
+const submit = (values, method) => dispatch => {
+    const id = values._id ? values._id : '';
+    axios[method](`${BASE_URL}/billingCycles/${id}`, values)
+        .then(resp => {
+            toastr.success('Sucesso', 'Operação realizada com sucesso.');
+            dispatch(init());
+        })
+        .catch(e => {
+            e.response.data.errors.forEach(error => toastr.error('Erro', error));
+        });
 };
+
+export const create = values => submit(values, 'post');
+export const update = values => submit(values, 'put');
 
 export const showUpdate = billingCycle => [
     showTabs('tabUpdate'),
