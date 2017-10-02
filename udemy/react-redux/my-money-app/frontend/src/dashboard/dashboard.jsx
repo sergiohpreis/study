@@ -10,7 +10,6 @@ import ValueBox from '../common/widget/valueBox';
 
 class Dashboard extends Component {
     componentWillMount() {
-        console.log(`chamou`)
         this.props.getSummary();
     };
 

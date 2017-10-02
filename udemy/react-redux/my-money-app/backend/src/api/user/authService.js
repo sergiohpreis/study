@@ -9,7 +9,7 @@ const passwordRegex = /((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})/;
 
 const sendErrorsFromDB = (res, dbErrors) => {
     const errors = [];
-    _.forIn(dbErrors.errors, error => errors.push(error.messsage));
+    _.forIn(dbErrors.errors, error => errors.push(error.message));
     return res.status(400).json({errors});
 };
 
@@ -40,13 +40,13 @@ const validateToken = (req, res, next) => {
 };
 
 const signup = (req, res, next) => {
-    const name = req.body.name || ''
-    const email = req.body.email || ''
-    const password = req.body.password || ''
+    const name = req.body.name || '';
+    const email = req.body.email || '';
+    const password = req.body.password || '';
     const confirmPassword = req.body.confirm_password || '';
 
     if (!email.match(emailRegex)) {
-        return res.status(400).send({errors: ['O e-mail informado está invalido']});
+        return res.status(400).send({errors: ['O e-mail informado está inválido']});
     };
 
     if (!password.match(passwordRegex)) {
@@ -60,7 +60,7 @@ const signup = (req, res, next) => {
     const salt = bcrypt.genSaltSync();
     const passwordHash = bcrypt.hashSync(password, salt);
     if (!bcrypt.compareSync(confirmPassword, passwordHash)) {
-        return res.status(400).send({errors: ['Senhas não conferem']})
+        return res.status(400).send({errors: ['Senhas não conferem']});
     };
 
     User.findOne({email}, (err, user) => {
@@ -74,7 +74,7 @@ const signup = (req, res, next) => {
                 if (err) {
                     return sendErrorsFromDB(res, err);
                 } else {
-                    login(res, res, next);
+                    login(req, res, next);
                 };
             });
         };
