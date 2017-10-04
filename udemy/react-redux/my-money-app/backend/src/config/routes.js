@@ -8,6 +8,7 @@ module.exports = server => {
     const protectedApi = express.Router();
     server.use('/api', protectedApi);
 
+    // API REST usa Middleware de Autenticação
     protectedApi.use(auth);
 
     const BillingCycle = require('../api/billingCycle/billingCycleService');
