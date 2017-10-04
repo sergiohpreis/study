@@ -1,0 +1,24 @@
+{
+  "name": "js-tdd",
+  "version": "1.0.0",
+  "description": "Nossa biblioteca do curso de JS com TDD na prática.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sergiohpreis/study.git"
+  },
+  "keywords": [
+    "js",
+    "tdd",
+    "library"
+  ],
+  "author": "Sergio Henrique Pereira Reis <sergio.hpreis@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sergiohpreis/study/issues"
+  },
+  "homepage": "https://github.com/sergiohpreis/study#readme"
+}
